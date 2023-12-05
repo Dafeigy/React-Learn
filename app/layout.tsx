@@ -1,3 +1,4 @@
+import AppContextProvider from '@/components/AppContext'
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-green-500 p-10">{children}</body>
+      <body> 
+        <AppContextProvider>{children}</AppContextProvider>
+      </body>
     </html>
   )
 }
