@@ -29,15 +29,16 @@ export default function Chatlist(){
         <ul>
             {
                 chatList.map((item)=>{
-                    const isSelected = selectedChat?.id === item.id 
-                    return <li onClick = {()=>{
+                    const selected = selectedChat?.id === item.id 
+                    return (
+                    <li onClick = {()=>{
                         setSelectedChat(item)
                     }}
+                    
                     key = {item.id} 
-                    className={`flex items-center p-3 spacae-x-3 cursor-pointer rounded-md hover: bg-gray-800${
-                        isSelected
-                        ? "bg-gray-800" 
-                        : ""
+                    className={`group flex items-center p-3 spacae-x-3 cursor-pointer rounded-md hover:bg-gray-800
+                    ${
+                        selected ? "bg-gray-800" : ""
                     }`}>
                         
                         <div>
@@ -45,13 +46,13 @@ export default function Chatlist(){
                         </div>
                         <div className="flex-1 whitespace-nowrap overflow-hidden">
                         {item.title}
-                        <span className={`${
-                            isSelected
-                            ?""
-                            :"from-gray-900"
-                        } absolute right-0 inset-y-0 w-8 from-gray-900-gradient-to-l`}></span>
+                        <span 
+                            className={`group-hover:from-gray-800 absolute right-0 inset-y-0 w-8 ${
+                                selected 
+                                ? "from-gray-800"
+                                : "from-gray-900"}`}></span>
                         </div>
-                    </li>
+                    </li>)
             }
             )}
         </ul>
